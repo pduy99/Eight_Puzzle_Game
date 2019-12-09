@@ -87,7 +87,7 @@ namespace Eight_Puzzle_Game
             } catch (Exception ex)
             {
                 btnRandomImageMode.IsEnabled = false;
-                btnRandomImageMode.ToolTip = "Folder Images not found";
+                btnRandomImageMode.ToolTip = "Random mode is disable because folder 'Images' not found";
             }
         }
 
