@@ -5,8 +5,87 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Eight_Puzzle_Game"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Eight Puzzle Game by Helios" Height="520" Width="810" Loaded="Window_Loaded"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="CanMinimize"
+        Background="LightSkyBlue"
+        MouseMove="Window_MouseMove"
+        PreviewKeyDown="Window_PreviewKeyDown"
+        Closing="Window_Closing">
+    <Window.Resources>
+        <local:TimeConverter x:Key="TimeConverter"/>
+        <local:RelativeToAbsolutePathConverter x:Key="PathConverter"/>
+    </Window.Resources>
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+        <!--Play Area-->
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="8*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <!--Picture here-->
+            <GroupBox Header="Picture" Grid.Row="0" Margin="30,20,30,20">
+                <Canvas Name="Crop_Image">
+                    
+                </Canvas>
+            </GroupBox>
+            <StackPanel Orientation="Horizontal" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Panel.ZIndex="-1">
+                <Label Content="Moves: " Foreground="White" FontWeight="Bold" FontSize="25"/>
+                <Label  Name="MoveLabel" Content="{Binding Moves}" Foreground="White" FontWeight="Bold" FontSize="25"/>
+            </StackPanel>
+        </Grid>
+        
+        <!--Setting Area-->
+        <StackPanel  Name="Setting_Area" Grid.Column="1" Visibility="Visible" Orientation="Vertical" >
+            <Label Content="Settings" FontSize="30" FontWeight="SemiBold" Foreground="White" 
+                   VerticalAlignment="Center" HorizontalAlignment="Center" DockPanel.Dock="Top"/>
+            <GroupBox Header="Mode" Margin="20,10,20,10">
+                <StackPanel Orientation="Horizontal">
+                    <ToggleButton Name="btnRandomImageMode" Content="Random Image" Click="BtnRandomImageMode_Click" Width="100" Height="30" Margin="0,0,10,0"/>
+                    <ToggleButton Name="btnSelectImageMode" Content="Select Image" Click="BtnSelectImageMode_Click" Width="100" Height="30" />
+                </StackPanel>
+            </GroupBox>
+            <GroupBox Header="Difficulty" Margin="20,10,20,10">
+                <StackPanel Orientation="Horizontal">
+                    <ToggleButton Name="btnEasyMode" Content="Easy" Click="BtnEasyMode_Click" Width="65" Height="30" Margin="0,0,10,0" />
+                    <ToggleButton Name="btnMediumMode" Content="Medium" Click="BtnMediumMode_Click" Width="65" Height="30" Margin="0,0,10,0" />
+                    <ToggleButton Name="btnHardMode" Content="Hard" Click="BtnHardMode_Click" Width="65" Height="30" />
+                </StackPanel>
+            </GroupBox>
+            <GroupBox Name="ReviewImageBox" Header="Review picture" Visibility="Visible" Margin="20,10,20,10">
+                <Image Name="ReviewImage" Width="200" Height="125" Source="{Binding ImagePath, Converter={StaticResource PathConverter}}"/>
+            </GroupBox>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Button Content="Play !" Click="Button_PlayClick" Width="80" Height="30" Margin="0,0,20,0"/>
+                <Button Content="Exit" Click="Button_ExitClick" Width="80" Height="30"/>
+            </StackPanel>
+            <Button Content="Load Game" Click="BtnLoad_Click" Width="80" Height="30" Margin="0,10,0,0"/>
+        </StackPanel>
+        <!--Fuction Area-->
+        <Grid Name ="Fuction_Area"  Grid.Column="1" Visibility="Collapsed" Panel.ZIndex="-1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <!--Original Picture-->
+            <GroupBox Grid.Row="0" Header="Original Picture" Margin="10,20,20,20" >
+                <Image Source="{Binding ImagePath, Converter={StaticResource PathConverter }}" Name="Original_Image" MaxHeight="200" MaxWidth="200" Stretch="Fill"/>
+            </GroupBox>
+            <!--Timer-->
+            <TextBlock Name="Timer"  Grid.Row="1" Foreground="Red" FontSize="60" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <!--Buttons-->
+            <DockPanel Grid.Row="2">
+                <Button Name="btnLoad" Click="BtnLoad_Click" Content="Load" Height="40" Width="70"  DockPanel.Dock="Left"/>
+                <Button Name="btnSave" Click="BtnSave_Click" Content="Save" Height="40" Width="70" DockPanel.Dock="Right" Margin="0,0,5,0"/>
+                <Button Name="btnNewGame" Click="BtnNewGame_Click" Content="New Game" Height="40" Width="70"/>
+            </DockPanel>
+        </Grid>
         
     </Grid>
 </Window>
