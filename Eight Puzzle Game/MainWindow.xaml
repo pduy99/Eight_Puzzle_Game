@@ -46,8 +46,8 @@
                    VerticalAlignment="Center" HorizontalAlignment="Center" DockPanel.Dock="Top"/>
             <GroupBox Header="Mode" Margin="20,10,20,10">
                 <StackPanel Orientation="Horizontal">
-                    <ToggleButton Name="btnRandomImageMode" Content="Random Image" Click="BtnRandomImageMode_Click" Width="100" Height="30" Margin="0,0,10,0"/>
-                    <ToggleButton Name="btnSelectImageMode" Content="Select Image" Click="BtnSelectImageMode_Click" Width="100" Height="30" />
+                    <ToggleButton  ToolTipService.ShowOnDisabled="True" Name="btnRandomImageMode" Content="Random Image" Click="BtnRandomImageMode_Click" Width="100" Height="30" Margin="0,0,10,0"/>
+                    <ToggleButton  Name="btnSelectImageMode" Content="Select Image" Click="BtnSelectImageMode_Click" Width="100" Height="30" />
                 </StackPanel>
             </GroupBox>
             <GroupBox Header="Difficulty" Margin="20,10,20,10">

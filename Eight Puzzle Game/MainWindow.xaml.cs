@@ -77,10 +77,17 @@ namespace Eight_Puzzle_Game
             
             DirectoryInfo d = new DirectoryInfo($"{AppDomain.CurrentDomain.BaseDirectory}Images//");
             //Lay tat ca anh co ten bat dau bang "ea"
-            FileInfo[] AllPicture = d.GetFiles("*.jpg");
-            foreach(FileInfo picture in AllPicture)
+            try
             {
-                _listRandomImage.Add("Images/" + picture.Name);
+                FileInfo[] AllPicture = d.GetFiles("*.jpg");
+                foreach (FileInfo picture in AllPicture)
+                {
+                    _listRandomImage.Add("Images/" + picture.Name);
+                }
+            } catch (Exception ex)
+            {
+                btnRandomImageMode.IsEnabled = false;
+                btnRandomImageMode.ToolTip = "Folder Images not found";
             }
         }
 
