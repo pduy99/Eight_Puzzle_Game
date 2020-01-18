@@ -21,8 +21,6 @@ There are two ways to play:
 	2. Use arrow keys to move the image.
 ```
 
-##Video Demo
-```
+## Video Demo
 [Link youtube](https://www.youtube.com/watch?v=8DeRQJuMzwY&list=UUHpb2kvWGqYaZth_ZkYSftw&index=2)
-```
 	
