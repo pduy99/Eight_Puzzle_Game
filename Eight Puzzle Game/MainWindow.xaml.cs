@@ -290,7 +290,9 @@ namespace Eight_Puzzle_Game
             btnRandomImageMode.IsChecked = !btnSelectImageMode.IsChecked;
 
             var screen = new OpenFileDialog();
-            if(screen.ShowDialog() == true)
+            screen.DefaultExt = "*.jpg";
+            screen.Filter = "JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png|JPG Files (*.jpg)|*.jpg";
+            if (screen.ShowDialog() == true)
             {
                 setting.ImagePath = screen.FileName;
                 var source = new BitmapImage(new Uri(setting.ImagePath, UriKind.Absolute));
@@ -667,7 +669,7 @@ namespace Eight_Puzzle_Game
 
             if (isWin)
             {
-                MessageBox.Show("You win");
+                MessageBox.Show($"congratulations !!! \n You win after {Moves} moves", "Game over");
                 DeactivePlaying();
             }
         }
@@ -683,6 +685,9 @@ namespace Eight_Puzzle_Game
                 image.PreviewMouseLeftButtonUp -= CropImage_PreviewMouseLeftButtonUp;
             }
             isPlaying = false;
+            _timer.Stop();
+            _timer.Tick -= _timer_Tick;
+
         }
 
         /// <summary>
