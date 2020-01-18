@@ -19,5 +19,7 @@ Extract and run file .exe to play
 There are two ways to play:
 	1. Use mouse to drag and drop image.
 	2. Use arrow keys to move the image.
-	
+##Video Demo
+```
+https://www.youtube.com/watch?v=8DeRQJuMzwY&list=UUHpb2kvWGqYaZth_ZkYSftw&index=2
 	
